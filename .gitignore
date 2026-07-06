@@ -1,0 +1,16 @@
+# Variables de entorno
+!.env.example
+.env
+.env.*
+
+# Datos persistentes
+volumes/*
+
+# Solo local
+bookmarks/*
+
+# Logs
+*.log
+
+# De programas
+*.swp
