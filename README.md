@@ -30,7 +30,6 @@ Documentation should outlive memory.
 .
 ├── bookmarks/
 ├── services/
-├── network/
 ├── volumes/
 ├── LICENSE
 └── README.md
@@ -61,13 +60,6 @@ Every service is completely independent and contains its own:
 - `docker-compose.yml`
 - `.env.example`
 - service-specific configuration
-
-
-
-### 🌐 network
-
-Shared Docker networks used by multiple services.
-
 
 
 ### 💾 volumes
