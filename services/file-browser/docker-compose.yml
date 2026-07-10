@@ -7,13 +7,16 @@ services:
       - 8081:80/tcp
     volumes:
       - type: bind
-        source:  ${FILEBROWSER_DATA}:/srv
+        source:  ${FILEBROWSER_DATA}
+        target: /srv
         is_directory: true
       - type: bind
-        source:  ${FILEBROWSER_DATABASE}:/database
+        source:  ${FILEBROWSER_DATABASE
+        target: /database
         is_directory: true
       - type: bind
-        source:  ${FILEBROWSER_CONFIG}:/config
+        source:  ${FILEBROWSER_CONFIG
+        target: /config
         is_directory: true
     restart: 'unless-stopped'
     networks:
