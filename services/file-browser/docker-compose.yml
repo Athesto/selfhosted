@@ -6,9 +6,15 @@ services:
     ports:
       - 8081:80/tcp
     volumes:
-      - ${FILEBROWSER_DATA}:/srv
-      - ${FILEBROWSER_DATABASE}:/database
-      - ${FILEBROWSER_CONFIG}:/config
+      - type: bind
+        source:  ${FILEBROWSER_DATA}:/srv
+        is_directory: true
+      - type: bind
+        source:  ${FILEBROWSER_DATABASE}:/database
+        is_directory: true
+      - type: bind
+        source:  ${FILEBROWSER_CONFIG}:/config
+        is_directory: true
     restart: 'unless-stopped'
     networks:
       - proxy
