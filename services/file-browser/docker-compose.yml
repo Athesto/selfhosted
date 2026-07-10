@@ -11,11 +11,11 @@ services:
         target: /srv
         is_directory: true
       - type: bind
-        source: ${FILEBROWSER_DATABASE
+        source: ${FILEBROWSER_DATABASE}
         target: /database
         is_directory: true
       - type: bind
-        source: ${FILEBROWSER_CONFIG
+        source: ${FILEBROWSER_CONFIG}
         target: /config
         is_directory: true
     restart: 'unless-stopped'
