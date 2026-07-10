@@ -1,0 +1,21 @@
+services:
+  file-browser:
+    image: filebrowser/filebrowser
+    container_name: demo-filebrowser
+    user: "1000:1000"
+    ports:
+      - 8085:80/tcp
+    volumes:
+      - type: bind
+        source: ${FILEBROWSER_DATA}
+        target: /srv
+        is_directory: true
+      - ${FILEBROWSER_DATABASE}:/database
+      - ${FILEBROWSER_CONFIG}:/config
+    restart: 'unless-stopped'
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
