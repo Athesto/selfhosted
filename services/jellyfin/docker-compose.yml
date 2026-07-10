@@ -7,11 +7,26 @@ services:
       - 8096:8096/tcp
       - 7359:7359/udp
     volumes:
-      - ${JELLYFIN_CONFIG}:/etc/jellyfin
-      - ${JELLYFIN_CACHE}:/cache
-      - ${JELLYFIN_DATA}:/var/lib/jellyfin
-      - ${MEDIA_MOVIES}:/media/Movies:ro
-      - ${MEDIA_SHOWS}:/media/Shows:ro
+      - type: bind
+        source: ${JELLYFIN_CONFIG}
+        target: /etc/jellyfin
+        is_directory: true
+      - type: bind
+	source:  ${JELLYFIN_CACHE}
+        target: /cache
+        is_directory: true
+      - type: bind
+	source:  ${JELLYFIN_DATA}
+        target: /var/lib/jellyfin
+        is_directory: true
+      - type: bind
+	source:  ${MEDIA_MOVIES}
+        target: /media/Movies:ro
+        is_directory: true
+      - type: bind
+	source:  ${MEDIA_SHOWS}
+        target: /media/Shows:ro
+        is_directory: true
     restart: 'unless-stopped'
     environment:
       - JELLYFIN_CONFIG_DIR=/etc/jellyfin
