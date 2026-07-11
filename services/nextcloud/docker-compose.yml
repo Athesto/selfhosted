@@ -17,8 +17,6 @@ services:
     volumes:
       - ${NEXTCLOUD_HTML}:/var/www/html
       - ${NEXTCLOUD_DATA}:/var/www/html/data
-    networks:
-      - proxy
 
   nextcloud-mariadb:
     image: mariadb:11
@@ -31,8 +29,6 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ${DATABASE_DATA}:/var/lib/mysql
-    networks:
-      - proxy
 
   nextcloud-redis:
     image: redis:7-alpine
@@ -40,9 +36,3 @@ services:
     restart: unless-stopped
     volumes:
       - ${REDIS_DATA}:/data
-    networks:
-      - proxy
-
-networks:
-  proxy:
-    external: true

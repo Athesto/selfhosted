@@ -33,9 +33,3 @@ services:
       - JELLYFIN_DATA_DIR=/var/lib/jellyfin
       - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl}
       - TZ=${TZ}
-    networks:
-      - proxy
-
-networks:
-  proxy:
-    external: true

@@ -19,9 +19,3 @@ services:
         target: /config
         is_directory: true
     restart: 'unless-stopped'
-    networks:
-      - proxy
-
-networks:
-  proxy:
-    external: true
