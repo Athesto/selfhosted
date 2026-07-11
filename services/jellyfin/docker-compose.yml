@@ -28,6 +28,8 @@ services:
         target: /media/Shows:ro
         is_directory: true
     restart: 'unless-stopped'
+    devices:
+      - ${DRI_DEVICE:-/dev/null}:${DRI_DEVICE:-/dev/null}
     environment:
       - JELLYFIN_CONFIG_DIR=/etc/jellyfin
       - JELLYFIN_DATA_DIR=/var/lib/jellyfin
