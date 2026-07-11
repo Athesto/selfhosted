@@ -30,6 +30,9 @@ services:
     restart: 'unless-stopped'
     devices:
       - ${DRI_DEVICE:-/dev/null}:${DRI_DEVICE:-/dev/null}
+    group_add:
+      - "${VIDEO_GID}"
+      - "${RENDER_GID}"
     environment:
       - JELLYFIN_CONFIG_DIR=/etc/jellyfin
       - JELLYFIN_DATA_DIR=/var/lib/jellyfin
