@@ -13,7 +13,7 @@ services:
 
     volumes:
       - type: bind
-        source: ${COUCH_DATA}
+        source: ${COUCHDB_DATA}
         target: /opt/couchdb/data
         is_directory: true
 
@@ -25,6 +25,6 @@ services:
     
     labels:
       org.opencontainers.image.description: >-
-        Despliega CouchDB 3.5 en Coolify con credenciales automáticas, 
-        almacenamiento persistente, acceso por el puerto 5984,
-        verificación de salud y reinicio automático.
+        Apache CouchDB es una base de datos NoSQL orientada a documentos
+        que almacena información en formato JSON y ofrece acceso mediante
+        una API HTTP, replicación y sincronización distribuida.
