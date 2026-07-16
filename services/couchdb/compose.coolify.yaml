@@ -1,13 +1,13 @@
 services:
   couchdb:
     image: couchdb:3.5.0
-    container_name: couchdb
     restart: unless-stopped
     configs:
       - source: couchdb_single_node
         target: /opt/couchdb/etc/local.d/single-node.ini
 
     environment:
+      SERVICE_URL_COUCHDB_5984: ""
       COUCHDB_USER: ${COUCHDB_USER:-admin}
       COUCHDB_PASSWORD: ${COUCHDB_PASSWORD}
 
