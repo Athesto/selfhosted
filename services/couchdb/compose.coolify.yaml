@@ -10,7 +10,7 @@ services:
       COUCHDB_USER: ${COUCHDB_USER:-admin}
       COUCHDB_PASSWORD: ${COUCHDB_PASSWORD}
 
-    port:
+    ports:
       - "5984:5984"
 
     volumes:
