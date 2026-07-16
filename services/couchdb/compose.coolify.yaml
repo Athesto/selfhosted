@@ -17,6 +17,13 @@ services:
         target: /opt/couchdb/data
         is_directory: true
 
+      - type: bind
+        source: ${COUCHDB_SINGLE_NODE_FILE}
+        target: /opt/couchdb/etc/local.d/single-node.ini
+        content: |
+          [couchdb]
+          single_node = true
+
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:5984/_up"]
       interval: 10s
