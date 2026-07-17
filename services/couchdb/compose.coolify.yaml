@@ -2,9 +2,6 @@ services:
   couchdb:
     image: couchdb:3.5.0
     restart: unless-stopped
-    configs:
-      - source: couchdb_single_node
-        target: /opt/couchdb/etc/local.d/single-node.ini
 
     environment:
       COUCHDB_USER: ${COUCHDB_USER:-admin}
@@ -18,6 +15,10 @@ services:
         source: ${COUCHDB_DATA}
         target: /opt/couchdb/data
         is_directory: true
+      - type: bind
+        source: ${COUCHDB_CONFIG}
+        target: /opt/couchdb/etc/local.d
+        is_directory: true
 
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:5984/_up"]
@@ -30,9 +31,3 @@ services:
         Apache CouchDB es una base de datos NoSQL orientada a documentos
         que almacena información en formato JSON y ofrece acceso mediante
         una API HTTP, replicación y sincronización distribuida.
-
-configs:
-  couchdb_single_node:
-    content: |
-      [couchdb]
-      single_node = true
